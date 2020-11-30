@@ -1,0 +1,11 @@
+node_modules/
+.idea
+gulp-tasks/
+gulpfile.js
+faviconData.json
+gulp-favicon.js
+package-lock.json
+webpack.config.js
+package.json
+README.md
+workspace.code-workspace
