@@ -60,7 +60,7 @@ window.addEventListener('DOMContentLoaded', () => {
         return await res.json()
     }
 
-    getCards('http://localhost:25000/cards')
+    getCards('https://dtrust.github.io/shoes-product-cards/data/db.json')
         .then(data => {
             data.forEach(({logo, circleBg, imgSrc, imgAlt, title, price, desc, sizes }) => {
                 new Product( '.market-list', logo, circleBg, imgSrc, imgAlt, title, price, desc, sizes).render()
@@ -95,12 +95,15 @@ window.addEventListener('DOMContentLoaded', () => {
             card.classList.remove('rotate')
         }
 
-        //Moving Animation Event
-        card.addEventListener('mousemove', beginTransform)
-        //Animate In
-        card.addEventListener('mouseenter', cursorEnter)
-        //Animate Out
-        card.addEventListener('mouseleave', endTransform)
+        if ('ontouchstart' in document.documentElement) {
+            card.addEventListener('touchstart', cursorEnter)
+            card.addEventListener('touchmove', beginTransform)
+            card.addEventListener('touchend', endTransform)
+        } else {
+            card.addEventListener('mousemove', beginTransform)
+            card.addEventListener('mouseenter', cursorEnter)
+            card.addEventListener('mouseleave', endTransform)
+        }
     }
 
 })
