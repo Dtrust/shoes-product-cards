@@ -1,3 +1,6 @@
+import 'whatwg-fetch'
+import loader from './modules/loader'
+
 window.addEventListener('DOMContentLoaded', () => {
     class Product {
         constructor(parentSelector, logo, circleBg, imgSrc, imgAlt, title, price, desc, sizes ) {
@@ -14,7 +17,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
         render() {
             const element = document.createElement('li')
-            element.classList.add('market-item', 'card')
+            element.classList.add('market-item')
+            element.classList.add('card')
 
             element.innerHTML = `
                 <div class="card-logo">${this.logo}</div>
@@ -33,6 +37,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     <p class="card-info__desc">${this.desc}</p>
                     <div class="card-info__options">
                         <p class="options-title">Sizes:</p>
+                        <ul class="options-list"></ul>
                     </div>
                 <div class="card-purchase">
                     <button class="card-purchase__btn btn">By now</button>
@@ -42,8 +47,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
             this.parent.appendChild(element)
 
-            const options = element.querySelector('.card-info__options')
-            const buttons = this.sizes.map(item =>`<button class="options-btn btn">${item}</button>`)
+            const options = element.querySelector('.options-list')
+            const buttons = this.sizes.map(item =>`<li class="options-item"><button class="options-btn btn">${item}</button></li>`)
 
             buttons.forEach(item => {
                 options.innerHTML += `${item}`
@@ -51,12 +56,18 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    const getCards = async (url) => {
+    function errorHandler(parentContainer) {
+        const element = document.querySelector(parentContainer)
+            element.innerHTML = `<p>Sorry, the connection to JSON database is failed<br> Please, try again later</p>`
+    }
+
+    const getCards = async (url ) => {
         const res = await fetch(url)
 
         if (!res.ok) {
-            throw new Error(`Could not fetch ${url}, status: ${res.status}`)
+            throw new Error(`Could not fetch ${url}, status: ${res.status}`, errorHandler('.loader'))
         }
+        loader('.loader')
         return await res.json()
     }
 

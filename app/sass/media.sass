@@ -5,8 +5,29 @@
             &__img
                 max-width: 60%
 
-@media screen and ( max-width: 575px )
+@media screen and ( max-width: 400px )
     .market
         &-list
-            grid-template-columns: repeat(auto-fit,minmax(280px, 1fr))
+            grid-template-columns: repeat(auto-fit,minmax(10em, 1fr))
 
+@include ie-only
+    .market
+        &-list
+            display: flex
+            justify-content: space-between
+        &-item
+            width: 30%
+
+    .card
+        &-preview
+            &__img
+                top: 2rem
+                left: 1.5rem
+
+@include ie-only--mobile
+    .market
+        &-list
+            flex-wrap: wrap
+        &-item
+            width: 100%
+            margin-top: .5em

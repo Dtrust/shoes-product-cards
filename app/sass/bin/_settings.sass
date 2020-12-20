@@ -1,8 +1,9 @@
-@import '../../../node_modules/rfs/sass'
+$--color--main: hsla(205, 93%, 45%, 1)
+$--color--second: hsla(235, 32%, 47%, 1)
+$mainFontColor: hsla(0, 0%, 85%, 1)
 
-$--color--main: rgba(8, 134, 224, 1)
-$--color--second: rgba(82, 89, 160, 1)
-$mainFontColor: rgba(218, 218, 218, 1)
+$--color--card-bg: hsla(222, 8%, 32%, 1)
+$--collor-error: hsla(340, 94%, 50%, 1)
 
 \:root
     @include fluid-type(font-size, $minScreen, $maxScreen, $minFont, $maxFont)
@@ -59,7 +60,6 @@ button
     padding: .2em .7em
     background: $--color--main
     border-radius: .3em
-    box-shadow: 0 0 0 2px $--color--main
     color: $mainFontColor
     border: 0
     outline: 0
@@ -75,26 +75,5 @@ a
     text-decoration: none
     color: $mainFontColor
 
-//.btn
-//    padding: .2em .7em
-//    background: rgba(56, 70, 102, 1)
-//    border-radius: .5em
-//    box-shadow: 0 0 0 2px $--color--main
-//    &:hover
-//        box-shadow: 0 0 0 2px rgba(255, 255, 255, 1)
-
-//.hidden
-//    animation: fadeOut .5s
-//    animation-fill-mode: forwards
-//
-//.transition
-//    -webkit-transition: .8s
-//    -moz-transition: .8s
-//    -ms-transition: .8s
-//    -o-transition: .8s
-//    transition: .8s
-//
-//.title
-//    font-size: 3em
-//    letter-spacing: 15px
-//    transition: all .3s ease
+.hidden
+    display: none

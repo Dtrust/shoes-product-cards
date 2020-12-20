@@ -67,7 +67,7 @@ $h5: .3rem;
 }
 
 @mixin ie-only--mobile {
-  @media screen and (max-width: 575px) and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  @media screen and (max-width: 800px) and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     @content;
   }
 }
@@ -79,52 +79,3 @@ $h5: .3rem;
   align-items: center;
   @content;
 }
-
-@mixin navMobileBtn {
-  height: 19px;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-between;
-  @content;
-}
-
-
-@mixin navMobileSpan {
-  width: 35px;
-  height: 2px;
-  margin: 0;
-  display: block;
-  font-size: 0;
-  background: $--color--main;
-  border-radius: 20px;
-  -webkit-transition: all .5s cubic-bezier(.77,.2,.05,1);
-  transition: all .5s cubic-bezier(.77,.2,.05,1);
-  @content;
-}
-
-@mixin title {
-  color: $--color--main;
-  font-size: 1.5em;
-  letter-spacing: 1.5px;
-  white-space: nowrap;
-  @content;
-}
-
-@mixin text {
-  font-size: .75rem;
-  line-height: 1.4;
-  letter-spacing: 1px;
-  @content;
-}
-
-// @mixin navMobileSpan--active {
-//   span:nth-child(1) {
-//     transform: rotate(45deg) translate(5px, 6px);
-//   }
-//   span:nth-child(2) {
-//     background: transparent;
-//   }
-//   span:nth-child(3) {
-//     transform: rotate(135deg) translate(-5px, 6px);
-//   }
-// }

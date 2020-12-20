@@ -1,23 +1,38 @@
+section.loader
+    svg(xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' style='margin: auto; display: block; shape-rendering: auto;' width='200px' height='200px' viewbox='0 0 100 100' preserveaspectratio='xMidYMid')
+        circle(cx='50' cy='50' r='0' fill='none' stroke='#0886e0' stroke-width='2')
+            animate(attributename='r' repeatcount='indefinite' dur='1s' values='0;40' keytimes='0;1' keysplines='0 0.2 0.8 1' calcmode='spline' begin='-0.5s')
+            animate(attributename='opacity' repeatcount='indefinite' dur='1s' values='1;0' keytimes='0;1' keysplines='0.2 0 0.8 1' calcmode='spline' begin='-0.5s')
+        circle(cx='50' cy='50' r='0' fill='none' stroke='#0886e0' stroke-width='2')
+            animate(attributename='r' repeatcount='indefinite' dur='1s' values='0;40' keytimes='0;1' keysplines='0 0.2 0.8 1' calcmode='spline')
+            animate(attributename='opacity' repeatcount='indefinite' dur='1s' values='1;0' keytimes='0;1' keysplines='0.2 0 0.8 1' calcmode='spline')
+
 section.market
     h2.visually-hidden Our products
     .container
-        ul.market-list
-            //-li.market-item.card
-            //-    .card-preview
-            //-        .card-preview__circle
-            //-        img.card-preview__img(src='assets/img/adidas.png' alt='adidas zx')
-            //-    .card-info
-            //-        h3.card-info__title Adidas ZX
-            //-        p.card-info__price
-            //-            span.count 200
-            //-            span.mark &nbsp;$
-            //-        p.card-info__desc Future-ready trainers with wrapped boost for exception comfort
-            //-        .card-info__options
-            //-            p.options-title Sizes:
-            //-            button.options-btn.btn 39
-            //-            button.options-btn.btn 40
-            //-            button.options-btn.btn 41
-            //-            button.options-btn.btn.btn--active 42
-            //-            button.options-btn.btn 44
-            //-    .card-purchase
-            //-        button.card-purchase__btn.btn By now
+        ul.market-list.hide
+            //- li.market-item.card
+            //-     .card-preview
+            //-         .card-preview__circle
+            //-         img.card-preview__img(src='assets/img/adidas.png' alt='adidas zx')
+            //-     .card-info
+            //-         h3.card-info__title Adidas ZX
+            //-         p.card-info__price
+            //-             span.count 200
+            //-             span.mark &nbsp;$
+            //-         p.card-info__desc Future-ready trainers with wrapped boost for exception comfort
+            //-         .card-info__options
+            //-             p.options-title Sizes:
+            //-             ul.options-list
+            //-                 li.options-item
+            //-                     button.options-btn.btn 39
+            //-                 li.options-item
+            //-                     button.options-btn.btn 40
+            //-                 li.options-item
+            //-                     button.options-btn.btn 41
+            //-                 li.options-item
+            //-                     button.options-btn.btn.btn--active 42
+            //-                 li.options-item
+            //-                     button.options-btn.btn 44
+            //-     .card-purchase
+            //-         button.card-purchase__btn.btn By now

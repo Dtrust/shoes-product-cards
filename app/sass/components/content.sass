@@ -1,3 +1,23 @@
+@keyframes fadein
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+@-webkit-keyframes fadein
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+.loader
+  width: 100%
+  min-height: 10em
+  text-align: center
+  font-size: $h2
+  color: $--collor-error
+  transform: translateX(0%) translateY(100%)
+
 .market
   padding: 2em 0
   &-list
@@ -13,11 +33,12 @@
   @include flex
   flex-direction: column
   justify-content: space-between
-  background: rgba(75, 79, 88, 1)
+  background: $--color--card-bg
   border: 1px solid rgba(19, 19, 19, 1)
   border-radius: 15px
   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2)
   transform-style: preserve-3d
+  animation: fadein 2s
   &-logo
     position: absolute
     top: 0
@@ -26,6 +47,7 @@
     transform: translateZ(0px)
     -moz-transform: translateZ(0px)
     -webkit-transform: translateZ(0px)
+    z-index: 1
     & svg
       & rect,
       & polygon,
@@ -41,7 +63,6 @@
     &__circle
       width: 10rem
       height: 10rem
-      //background: linear-gradient(to right, rgba(245, 70, 66, 0.75), rgba(8, 83, 156, 0.75))
       border-radius: 50%
       z-index: 1
     &__img
@@ -52,20 +73,14 @@
       -moz-transform: translateZ(0px)
       -webkit-transform: translateZ(0px)
       z-index: 2
-      @include ie-only
-        top: 20%
-        left: 10%
   &-info
     margin-top: 1em
     width: 100%
     transform-style: preserve-3d
     &__link
       display: block
-      color: rgba(255, 255, 255, 1)
+      color: $mainFontColor
       transition: all 0.75s ease-out
-      transform: translateZ(0px)
-      -moz-transform: translateZ(0px)
-      -webkit-transform: translateZ(0px)
       &:hover
         color: $--color--main
     &__title
@@ -79,34 +94,21 @@
       font-size: $h2
       line-height: 1.2
       transition: all 0.75s ease-out
-      transform: translateZ(0px)
-      -moz-transform: translateZ(0px)
-      -webkit-transform: translateZ(0px)
     &__price
       margin-top: .6em
       font-size: $h1
       font-weight: bold
       transition: all 0.75s ease-out
-      transform: translateZ(0px)
-      -moz-transform: translateZ(0px)
-      -webkit-transform: translateZ(0px)
     &__options
       min-height: 1.8em
       @include flex
       justify-content: flex-start
-      flex-wrap: wrap
       transition: all 0.75s ease-out
-      transform: translateZ(0px)
-      -moz-transform: translateZ(0px)
-      -webkit-transform: translateZ(0px)
   &-purchase
     margin-top: 1em
     @include flex
     justify-content: center
     transition: all 0.75s ease-out
-    transform: translateZ(0px)
-    -moz-transform: translateZ(0px)
-    -webkit-transform: translateZ(0px)
     transform-style: preserve-3d
     &__btn
       display: block
@@ -116,6 +118,8 @@
       font-weight: bold
       text-transform: uppercase
       transform-style: preserve-3d
+
+
   &.rotate
     & .card-logo
       transform: translateZ(160px)
@@ -153,8 +157,12 @@
   &-title
     margin-right: 1em
     font-size: $h3
+  &-list
+    @include flex
+    flex-flow: wrap
+  &-item
+    margin-right: .5em
   &-btn
-    margin-right: 1em
     font-size: $h3
     font-weight: bold
     transform-style: preserve-3d
