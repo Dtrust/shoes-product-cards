@@ -1,0 +1,14 @@
+block variables
+
+doctype html
+html(lang= lang)
+	head
+		block head
+		include ../components/head
+	body
+		include ../components/header
+		block content
+		include ../components/footer
+		// change script src for GH Pages 'https://dtrust.github.io/shoes-product-cards/js/script.bundle.js'
+		script(src='https://dtrust.github.io/shoes-product-cards/js/script.bundle.js')
+		block script

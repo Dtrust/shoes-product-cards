@@ -1,11 +1,6 @@
 node_modules/
 .idea
 .publish
-gulp-tasks/
-gulpfile.js
-faviconData.json
 gulp-favicon.js
 package-lock.json
-webpack.config.js
-package.json
 workspace.code-workspace
