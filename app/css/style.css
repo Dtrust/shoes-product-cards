@@ -136,7 +136,8 @@ a {
   transform: translateX(0%) translateY(100%); }
 
 .market {
-  padding: 2em 0; }
+  padding: 2em 0;
+  min-height: 50vh; }
   .market-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));

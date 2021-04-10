@@ -1,5 +1,7 @@
 import 'whatwg-fetch'
-import loader from './modules/loader'
+import {getCards} from './services/services'
+import cardRotate from './modules/rotateCards'
+import outputConsoleName from './modules/consoleName';
 
 window.addEventListener('DOMContentLoaded', () => {
     class Product {
@@ -56,21 +58,6 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function errorHandler(parentContainer) {
-        const element = document.querySelector(parentContainer)
-            element.innerHTML = `<p>Sorry, the connection to JSON database is failed<br> Please, try again later</p>`
-    }
-
-    const getCards = async (url ) => {
-        const res = await fetch(url)
-
-        if (!res.ok) {
-            throw new Error(`Could not fetch ${url}, status: ${res.status}`, errorHandler('.loader'))
-        }
-        loader('.loader')
-        return await res.json()
-    }
-
     getCards('https://dtrust.github.io/shoes-product-cards/data/db.json')
         .then(data => {
             data.forEach(({logo, circleBg, imgSrc, imgAlt, title, price, desc, sizes }) => {
@@ -85,36 +72,5 @@ window.addEventListener('DOMContentLoaded', () => {
 
         })
 
-    //Movement Animation to happen
-    function cardRotate(card) {
-
-        function cursorEnter() {
-            card.style.transition = 'none'
-            card.classList.add('rotate')
-        }
-
-        function beginTransform(e) {
-            let xAxis = (window.innerWidth / 2 - e.clientX) / 25
-            let yAxis = (window.innerHeight / 2 - e.clientY) / 25
-
-            card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`
-        }
-
-        function endTransform(e) {
-            card.style.transition = 'all 0.5s ease'
-            card.style.transform = `rotateY(0deg) rotateX(0deg)`
-            card.classList.remove('rotate')
-        }
-
-        if ('ontouchstart' in document.documentElement) {
-            card.addEventListener('touchstart', cursorEnter)
-            card.addEventListener('touchmove', beginTransform)
-            card.addEventListener('touchend', endTransform)
-        } else {
-            card.addEventListener('mousemove', beginTransform)
-            card.addEventListener('mouseenter', cursorEnter)
-            card.addEventListener('mouseleave', endTransform)
-        }
-    }
-
+    outputConsoleName('%c D %c E %c N %c N %c I %c S ')
 })
